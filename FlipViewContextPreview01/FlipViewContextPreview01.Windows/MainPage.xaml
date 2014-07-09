@@ -8,6 +8,38 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <FlipView x:Name="NormalFlipView"
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  >
+            
+        </FlipView>
+        <FlipView x:Name="WorkingFlipView"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  >
+
+        </FlipView>
+        <FlipView x:Name="ContextFlipView"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  >
+
+        </FlipView>
+        <FlipView x:Name="PreviewFlipView"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  >
+
+        </FlipView>
     </Grid>
 </Page>

@@ -9,6 +9,9 @@ namespace FlipViewContextPreview01
         public MainPage()
         {
             InitializeComponent();
+
+            // TODO testme only
+            WinRTXamlToolkit.Debugging.DC.ShowVisualTree();
         }
     }
 }
