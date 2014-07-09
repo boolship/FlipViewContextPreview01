@@ -7,6 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!--
+    # Ref: Windows 8 to Windows 8.1 Preview starting with the XAML templates
+    http://blogs.windows.com/windows/b/appbuilder/archive/2013/07/24/windows-8-to-windows-8-1-preview-starting-with-the-xaml-templates.aspx
+    # StandardStyles.xaml
+    This file has been removed. All the styles that are still utilized in the new project and item templates have been replaced with styles built into Windows 8.1 Preview. The data templates have been moved locally to the pages that use them.
+    # Ref: Getting rid of StandardStyles.xaml in Windows 8.1
+    http://timheuer.com/blog/archive/2013/10/29/remove-standardstyles-xaml-from-windows-8-1-winrt-projects.aspx
+    A Intellisense
+    B Once you have the style you can now also F12 (Go to definition) on the Style itself!
+    But, R# blocks F12, so Tools|Options|Resharper|General|Suspend or CTRL-ALT-SHIFT-1 Toggle
+    C:\Program Files (x86)\Windows Kits\8.1\Include\winrt\xaml\design
+    C:\Program Files (x86)\Windows Kits\8.0\Include\WinRT\Xaml\Design
+    -->
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,14 +35,45 @@
                   Grid.Row="0"
                   Grid.Column="0"
                   >
-            
-        </FlipView>
-        <FlipView x:Name="WorkingFlipView"
-                  Grid.Row="0"
-                  Grid.Column="1"
-                  >
 
         </FlipView>
+
+        <Grid x:Name="WorkingGridContent"
+              Grid.Row="0"
+              Grid.Column="1"
+              Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <!--Style="{StaticResource HeaderTextStyle}"-->
+                <TextBlock TextWrapping="Wrap" 
+                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Margin="50,50,1,30">
+                <Run Text="FlipView "/>
+                <Run Text="Context " FontWeight="Medium"/>
+                <Run Text="Indicator"/>
+                </TextBlock>
+            </Grid>
+
+            <FlipView x:Name="WorkingFlipView"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  >
+
+            </FlipView>
+            <!--<FlipView x:Name="MyFlipViewWithContext"
+                  Grid.Row="1" 
+                  d:DataContext="{Binding Source={d:DesignInstance Type=local:SampleData, IsDesignTimeCreatable=True}}"  
+                  ItemTemplate="{StaticResource FlipViewItemTemplate}" 
+                  ItemsSource="{Binding SampleItems}" 
+                  ItemContainerStyle="{StaticResource FlipViewContainerItemTemplate}" 
+                  Style="{StaticResource FlipViewStyle}"/>-->
+
+        </Grid>
+
         <FlipView x:Name="ContextFlipView"
                   Grid.Row="1"
                   Grid.Column="0"
