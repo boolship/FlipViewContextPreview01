@@ -1,4 +1,6 @@
-﻿
+﻿using System.Linq;
+using Windows.UI.Xaml.Controls;
+
 namespace FlipViewContextPreview01
 {
     /// <summary>
@@ -13,6 +15,17 @@ namespace FlipViewContextPreview01
 
             // TODO testme only
             WinRTXamlToolkit.Debugging.DC.ShowVisualTree();
+        }
+
+        // TODO ListView event handler that keeps selected item in view
+        private void ListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // TODO: Add event handler implementation here.
+            var listView = sender as ListView;
+            if (listView != null && e != null && e.AddedItems.Count > 0)
+            {
+                listView.ScrollIntoView(e.AddedItems.First());
+            }
         }
     }
 }
