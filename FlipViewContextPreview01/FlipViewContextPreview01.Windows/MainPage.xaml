@@ -69,31 +69,6 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ListViewItem">
                         
-                        <!--TODO fixme008 testme-->
-                        <!--<ListViewItemPresenter CheckHintBrush="{ThemeResource ListViewItemCheckHintThemeBrush}" 
-                                               CheckBrush="{ThemeResource ListViewItemCheckThemeBrush}"
-                                               ContentMargin="4" 
-                                               ContentTransitions="{TemplateBinding ContentTransitions}" 
-                                               CheckSelectingBrush="{ThemeResource ListViewItemCheckSelectingThemeBrush}" 
-                                               DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" 
-                                               DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" 
-                                               DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" 
-                                               DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" 
-                                               FocusBorderBrush="{ThemeResource ListViewItemFocusBorderThemeBrush}"
-                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                               Padding="{TemplateBinding Padding}" 
-                                               PointerOverBackgroundMargin="1" 
-                                               PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" 
-                                               PointerOverBackground="{ThemeResource ListViewItemPointerOverBackgroundThemeBrush}" 
-                                               ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" 
-                                               SelectedPointerOverBorderBrush="{ThemeResource ListViewItemSelectedPointerOverBorderThemeBrush}" 
-                                               SelectionCheckMarkVisualEnabled="True" 
-                                               SelectedForeground="{ThemeResource ListViewItemSelectedForegroundThemeBrush}" 
-                                               SelectedPointerOverBackground="{ThemeResource ListViewItemSelectedPointerOverBackgroundThemeBrush}" 
-                                               SelectedBorderThickness="{ThemeResource ListViewItemCompactSelectedBorderThemeThickness}" 
-                                               SelectedBackground="{ThemeResource ListViewItemSelectedBackgroundThemeBrush}" 
-                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
-                        
                         <!--TODO Border for ListViewItem-->
                         <Border x:Name="OuterContainer" 
                                 Width="50" 
@@ -180,7 +155,7 @@
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                         </Border>
-                                                    
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -406,12 +381,12 @@
                                                   VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" 
                                                   VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" 
                                                   ZoomMode="Disabled">
-                                        <!--TODO fixme008 testme or delme -->
-                                        <!--<ScrollViewer.ContentTransitions>
+                                        <!--TODO add ContentTransistions -->
+                                        <ScrollViewer.ContentTransitions>
                                             <TransitionCollection>
                                                 <RepositionThemeTransition/>
                                             </TransitionCollection>
-                                        </ScrollViewer.ContentTransitions>-->
+                                        </ScrollViewer.ContentTransitions>
                                         <ItemsPresenter/>
                                     </ScrollViewer>
                                     <Button Grid.Row="0" x:Name="PreviousButtonHorizontal" HorizontalAlignment="Left" Height="40" IsTabStop="False" Template="{ThemeResource HorizontalPreviousTemplate}" VerticalAlignment="Center" Width="70"/>
@@ -420,7 +395,7 @@
                                     <Button Grid.Row="0" x:Name="NextButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalNextTemplate}" VerticalAlignment="Bottom" Width="70"/>
 
                                     <!--TODO ListView with item styling-->
-                                    <!--HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"-->
+                                    <!--replace: HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"-->
                                     <ListView x:Name="ContextListView"
                                               Grid.Row="1" 
                                               ItemsSource="{TemplateBinding ItemsSource}"
