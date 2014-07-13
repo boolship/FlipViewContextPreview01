@@ -8,6 +8,7 @@ namespace FlipViewContextPreview01
     {
         public MainPage()
         {
+            DataContext = new SampleData();
             InitializeComponent();
 
             // TODO testme only

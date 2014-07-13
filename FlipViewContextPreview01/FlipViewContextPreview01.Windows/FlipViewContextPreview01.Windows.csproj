@@ -114,6 +114,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleData.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -127,6 +128,10 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Images\dexter.jpg" />
+    <Content Include="Images\gameofthrones.jpg" />
+    <Content Include="Images\himym.jpg" />
+    <Content Include="Images\sonsofanarchy.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="GroupDetailPage1.xaml">
@@ -146,6 +151,7 @@
       <HintPath>..\..\packages\WinRTXamlToolkit.Debugging.1.6.1.3\lib\netcore451\WinRTXamlToolkit.Debugging.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
