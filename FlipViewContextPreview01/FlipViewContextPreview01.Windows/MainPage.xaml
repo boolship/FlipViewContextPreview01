@@ -162,7 +162,7 @@
         </Style>
 
         <!--TODO FlipView style-->
-        <Style x:Key="FlipViewStyle" 
+        <Style x:Key="ContextFlipViewStyle" 
                TargetType="FlipView">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -932,7 +932,7 @@
                       ItemContainerStyle="{StaticResource FlipViewContainerItemTemplate}"
                       ItemsSource="{Binding SampleItems}"
                       ItemTemplate="{StaticResource FlipViewItemTemplate}" 
-					  Style="{StaticResource FlipViewStyle}"/>
+					  Style="{StaticResource ContextFlipViewStyle}"/>
 
         </Grid>
         
@@ -962,7 +962,7 @@
                       ItemContainerStyle="{StaticResource FlipViewContainerItemTemplate}"
                       ItemsSource="{Binding SampleItems}"
                       ItemTemplate="{StaticResource FlipViewItemTemplate}" 
-					  Style="{StaticResource FlipViewStyle}"/>
+					  Style="{StaticResource ContextFlipViewStyle}"/>
 
         </Grid>
 
