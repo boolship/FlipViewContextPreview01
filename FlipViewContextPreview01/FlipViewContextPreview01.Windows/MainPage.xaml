@@ -161,6 +161,113 @@
             </Setter>
         </Style>
 
+        <Style x:Key="VerticalListViewItemContainerStyle" 
+               TargetType="ListViewItem">
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="Background" Value="#FF535353"/>
+            <Setter Property="TabNavigation" Value="Local"/>
+            <Setter Property="IsHoldingEnabled" Value="True"/>
+            <Setter Property="Margin" Value="0,0,18,20"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+
+                        <!--TODO Border for ListViewItem-->
+                        <Border x:Name="OuterContainer" 
+                                Width="50" 
+                                Height="15" 
+                                Background="#FF8D8D8D">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="PointerOver"/>
+                                    <VisualState x:Name="Pressed" />
+                                    <VisualState x:Name="PointerOverPressed"/>
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                    <VisualState x:Name="PointerFocused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionHintStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.65" To="NoSelectionHint"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="VerticalSelectionHint"/>
+                                    <VisualState x:Name="HorizontalSelectionHint"/>
+                                    <VisualState x:Name="NoSelectionHint"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselecting"/>
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="UnselectedPointerOver"/>
+                                    <VisualState x:Name="UnselectedSwiping"/>
+                                    <VisualState x:Name="Selecting" />
+                                    <VisualState x:Name="Selected"/>
+                                    <VisualState x:Name="SelectedSwiping" />
+                                    <VisualState x:Name="SelectedUnfocused" >
+                                        <Storyboard AutoReverse="True">
+                                            <ColorAnimation Duration="0" To="White" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="OuterContainer" d:IsOptimized="True">
+                                                <ColorAnimation.EasingFunction>
+                                                    <BackEase/>
+                                                </ColorAnimation.EasingFunction>
+                                            </ColorAnimation>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="OuterContainer">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Thickness>0</Thickness>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:1">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Thickness>1</Thickness>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="DragStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.2" To="NotDragging"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="NotDragging"/>
+                                    <VisualState x:Name="Dragging"/>
+                                    <VisualState x:Name="DraggingTarget">
+                                        <Storyboard>
+                                            <DropTargetItemThemeAnimation TargetName="OuterContainer"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MultipleDraggingPrimary"/>
+                                    <VisualState x:Name="MultipleDraggingSecondary"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ReorderHintStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.2" To="NoReorderHint"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="NoReorderHint"/>
+                                    <VisualState x:Name="BottomReorderHint"/>
+                                    <VisualState x:Name="TopReorderHint"/>
+                                    <VisualState x:Name="RightReorderHint"/>
+                                    <VisualState x:Name="LeftReorderHint"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="DataVirtualizationStates">
+                                    <VisualState x:Name="DataAvailable"/>
+                                    <VisualState x:Name="DataPlaceholder"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!--TODO FlipView style-->
         <Style x:Key="ContextFlipViewStyle" 
                TargetType="FlipView">
@@ -1076,10 +1183,10 @@
                                 </Border.Resources>
 
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="80*"/>
-                                        <RowDefinition Height="20*"/>
-                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
                                     <ScrollViewer x:Name="ScrollingHost" 
                                                   AutomationProperties.AccessibilityView="Raw" 
                                                   BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" 
@@ -1092,6 +1199,7 @@
                                                   IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" 
                                                   IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" 
                                                   IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" 
+                                                  Margin="0,40,0,0"
                                                   Padding="{TemplateBinding Padding}" 
                                                   TabNavigation="{TemplateBinding TabNavigation}" 
                                                   VerticalSnapPointsType="MandatorySingle" 
@@ -1106,33 +1214,34 @@
                                         </ScrollViewer.ContentTransitions>
                                         <ItemsPresenter/>
                                     </ScrollViewer>
-                                    <Button Grid.Row="0" x:Name="PreviousButtonHorizontal" HorizontalAlignment="Left" Height="40" IsTabStop="False" Template="{ThemeResource HorizontalPreviousTemplate}" VerticalAlignment="Center" Width="70"/>
-                                    <Button Grid.Row="0" x:Name="NextButtonHorizontal" HorizontalAlignment="Right" Height="40" IsTabStop="False" Template="{StaticResource HorizontalNextTemplate}" VerticalAlignment="Center" Width="70"/>
-                                    <Button Grid.Row="0" x:Name="PreviousButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalPreviousTemplate}" VerticalAlignment="Top" Width="70"/>
-                                    <Button Grid.Row="0" x:Name="NextButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalNextTemplate}" VerticalAlignment="Bottom" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="PreviousButtonHorizontal" HorizontalAlignment="Left" Height="40" IsTabStop="False" Template="{ThemeResource HorizontalPreviousTemplate}" VerticalAlignment="Center" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="NextButtonHorizontal" HorizontalAlignment="Right" Height="40" IsTabStop="False" Template="{StaticResource HorizontalNextTemplate}" VerticalAlignment="Center" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="PreviousButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalPreviousTemplate}" VerticalAlignment="Top" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="NextButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalNextTemplate}" VerticalAlignment="Bottom" Width="70"/>
 
                                     <!--TODO ListView with item styling-->
                                     <!--replace: HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"-->
                                     <ListView x:Name="ContextListView"
-                                              Grid.Row="1" 
+                                              Grid.Column="1" 
                                               ItemsSource="{TemplateBinding ItemsSource}"
                                               SelectedItem="{Binding SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
-                                              Padding="0,0,0,40" 
-                                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                              ScrollViewer.HorizontalScrollMode="Enabled"
-                                              ScrollViewer.VerticalScrollMode="Disabled"
+                                              Padding="0,0,0,0" 
+                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                              ScrollViewer.HorizontalScrollMode="Disabled"
+                                              ScrollViewer.VerticalScrollMode="Enabled"
                                              
                                               SelectionMode="Single" 
-                                              ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
-                                              Margin="20,0,0,0">
+                                              ItemContainerStyle="{StaticResource VerticalListViewItemContainerStyle}"
+                                              SelectionChanged="ListViewSelectionChanged"
+                                              Margin="0,0,0,0">
 
                                         <ListView.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal" 
+                                                <StackPanel Orientation="Vertical" 
                                                             Margin="0,0,0,1" 
-                                                            ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-                                                            ScrollViewer.VerticalScrollBarVisibility="Disabled"  />
+                                                            ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                            ScrollViewer.VerticalScrollBarVisibility="Visible"  />
                                             </ItemsPanelTemplate>
                                         </ListView.ItemsPanel>
 
@@ -1513,10 +1622,10 @@
                                 </Border.Resources>
 
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="80*"/>
-                                        <RowDefinition Height="20*"/>
-                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                    </Grid.ColumnDefinitions>
                                     <ScrollViewer x:Name="ScrollingHost" 
                                                   AutomationProperties.AccessibilityView="Raw" 
                                                   BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" 
@@ -1529,6 +1638,7 @@
                                                   IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" 
                                                   IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" 
                                                   IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" 
+                                                  Margin="0,40,0,0"
                                                   Padding="{TemplateBinding Padding}" 
                                                   TabNavigation="{TemplateBinding TabNavigation}" 
                                                   VerticalSnapPointsType="MandatorySingle" 
@@ -1543,31 +1653,31 @@
                                         </ScrollViewer.ContentTransitions>
                                         <ItemsPresenter/>
                                     </ScrollViewer>
-                                    <Button Grid.Row="0" x:Name="PreviousButtonHorizontal" HorizontalAlignment="Left" Height="40" IsTabStop="False" Template="{ThemeResource HorizontalPreviousTemplate}" VerticalAlignment="Center" Width="70"/>
-                                    <Button Grid.Row="0" x:Name="NextButtonHorizontal" HorizontalAlignment="Right" Height="40" IsTabStop="False" Template="{StaticResource HorizontalNextTemplate}" VerticalAlignment="Center" Width="70"/>
-                                    <Button Grid.Row="0" x:Name="PreviousButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalPreviousTemplate}" VerticalAlignment="Top" Width="70"/>
-                                    <Button Grid.Row="0" x:Name="NextButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalNextTemplate}" VerticalAlignment="Bottom" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="PreviousButtonHorizontal" HorizontalAlignment="Left" Height="40" IsTabStop="False" Template="{ThemeResource HorizontalPreviousTemplate}" VerticalAlignment="Center" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="NextButtonHorizontal" HorizontalAlignment="Right" Height="40" IsTabStop="False" Template="{StaticResource HorizontalNextTemplate}" VerticalAlignment="Center" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="PreviousButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalPreviousTemplate}" VerticalAlignment="Top" Width="70"/>
+                                    <Button Grid.Column="0" x:Name="NextButtonVertical" HorizontalAlignment="Center" Height="40" IsTabStop="False" Template="{StaticResource VerticalNextTemplate}" VerticalAlignment="Bottom" Width="70"/>
 
                                     <!--TODO ListView without styling, with SelectionChanged event-->
                                     <!--replace: HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"-->
                                     <ListView x:Name="PreviewListView"
-                                              Grid.Row="1"
+                                              Grid.Column="1"
                                               ItemsSource="{TemplateBinding ItemsSource}"  
                                               SelectedItem="{Binding SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
-                                              Padding="0,0,0,40" 
-                                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                              ScrollViewer.HorizontalScrollMode="Enabled"
-                                              ScrollViewer.VerticalScrollMode="Disabled"
+                                              Padding="0,0,0,0" 
+                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                              ScrollViewer.HorizontalScrollMode="Disabled"
+                                              ScrollViewer.VerticalScrollMode="Enabled"
                                               
                                               SelectionChanged="ListViewSelectionChanged">
 
                                         <ListView.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <StackPanel  Orientation="Horizontal" 
+                                                <StackPanel  Orientation="Vertical" 
                                                              Margin="0,0,0,1" 
-                                                             ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-                                                             ScrollViewer.VerticalScrollBarVisibility="Disabled"  />
+                                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                             ScrollViewer.VerticalScrollBarVisibility="Visible"  />
                                             </ItemsPanelTemplate>
                                         </ListView.ItemsPanel>
 
