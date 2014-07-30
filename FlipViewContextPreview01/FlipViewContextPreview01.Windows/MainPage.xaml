@@ -20,7 +20,7 @@
                 <TextBlock TextWrapping="Wrap" 
                            Text="{Binding Title}" 
                            Grid.Row="1" 
-                           Style="{ThemeResource HeaderTextBlockStyle}"
+                           Style="{ThemeResource SubheaderTextBlockStyle}"
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"/>
                 <Image Grid.Row="0" 
@@ -507,7 +507,7 @@
                                               Grid.Row="1" 
                                               ItemsSource="{TemplateBinding ItemsSource}"
                                               SelectedItem="{Binding SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
-                                              Padding="0,0,0,40" 
+                                              Padding="0,0,0,20" 
                                               ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                               ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                               ScrollViewer.HorizontalScrollMode="Enabled"
@@ -944,7 +944,7 @@
                                               Grid.Row="1"
                                               ItemsSource="{TemplateBinding ItemsSource}"  
                                               SelectedItem="{Binding SelectedItem, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
-                                              Padding="0,0,0,40" 
+                                              Padding="0,0,0,20" 
                                               ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                               ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                               ScrollViewer.HorizontalScrollMode="Enabled"
@@ -1745,7 +1745,7 @@
             <Grid>
                 <!--Style="{StaticResource HeaderTextStyle}"-->
                 <TextBlock TextWrapping="Wrap" 
-                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Style="{ThemeResource SubheaderTextBlockStyle}"
                        Margin="50,50,1,30">
                 <Run Text="FlipView "/>
                 <Run Text="Context " FontWeight="Medium"/>
@@ -1775,7 +1775,7 @@
             <Grid>
                 <!--Style="{StaticResource HeaderTextStyle}"-->
                 <TextBlock TextWrapping="Wrap" 
-                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Style="{ThemeResource SubheaderTextBlockStyle}"
                        Margin="50,50,1,30">
                 <Run Text="FlipView "/>
                 <Run Text="Context " FontWeight="Medium"/>
@@ -1805,7 +1805,7 @@
             <Grid>
                 <!--Style="{StaticResource HeaderTextStyle}"-->
                 <TextBlock TextWrapping="Wrap" 
-                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Style="{ThemeResource SubheaderTextBlockStyle}"
                        Margin="50,50,1,30">
                     <Run Text="FlipView "/>
                     <Run Text="Preview " FontWeight="Medium"/>
@@ -1835,7 +1835,7 @@
             <Grid>
                 <!--Style="{StaticResource HeaderTextStyle}"-->
                 <TextBlock TextWrapping="Wrap" 
-                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Style="{ThemeResource SubheaderTextBlockStyle}"
                        Margin="50,50,1,30">
                 <Run Text="FlipView "/>
                 <Run Text="Preview " FontWeight="Medium"/>
