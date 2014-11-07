@@ -516,7 +516,8 @@
                                               SelectionMode="Single" 
                                               ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
                                               Margin="20,0,0,0">
-                                        
+                                        <!--ListViewSelectionChanged ??-->
+
                                         <ListView.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <StackPanel Orientation="Horizontal" 
